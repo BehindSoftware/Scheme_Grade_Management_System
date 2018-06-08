@@ -63,3 +63,17 @@
   (lambda (lst)
     (cons (rotate lst '())(rotate (reverse lst) '()))
     ))
+    
+;10.10
+(define (flatten tree)
+  (cond ((null? tree) '())
+        ((pair? tree) (append (flatten (car tree)) (flatten (cdr tree))))
+        (else (list tree))
+  )
+)
+
+(define same-fringe
+  (lambda (T1 T2)
+    (equal (flatten T1) (flatten T2))))
+    
+;(same-fringe `(1 ((2) 3) (4)) '(1 (2 (3 4))))
